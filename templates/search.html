@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Search - DataFinder
+{% endblock %}
+
+
+{% block content %}
+
+<div class="search-page">
+
+    <!-- Page heading -->
+
+    <div class="page-heading">
+
+        <h1>
+            Search Records
+        </h1>
+
+        <p>
+            Use the filters below to narrow down the results.
+        </p>
+
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         Filters
+         ---------------------------------------------------------- -->
+
+    <section class="filters">
+
+        <!-- Text search -->
+
+        <div class="filter-group">
+
+            <label for="search-input">
+                Search
+            </label>
+
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search by name or description..."
+            >
+
+        </div>
+
+
+        <!-- Category -->
+
+        <div class="filter-group">
+
+            <label for="category-filter">
+                Category
+            </label>
+
+            <select id="category-filter">
+
+                <option value="">
+                    All Categories
+                </option>
+
+                <option value="Sensor">
+                    Sensor
+                </option>
+
+                <option value="Controller">
+                    Controller
+                </option>
+
+                <option value="Network">
+                    Network
+                </option>
+
+                <option value="Storage">
+                    Storage
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="filter-group">
+
+            <label for="status-filter">
+                Status
+            </label>
+
+            <select id="status-filter">
+
+                <option value="">
+                    All Statuses
+                </option>
+
+                <option value="Active">
+                    Active
+                </option>
+
+                <option value="Inactive">
+                    Inactive
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         Result summary
+         ---------------------------------------------------------- -->
+
+    <div class="result-summary">
+
+        <span id="result-count">
+            Loading...
+        </span>
+
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         Results
+         ---------------------------------------------------------- -->
+
+    <section id="results-container">
+
+        <!--
+            JavaScript will insert result cards here.
+        -->
+
+    </section>
+
+
+    <!-- Message shown when there are no results -->
+
+    <div
+        id="no-results"
+        class="no-results hidden"
+    >
+        No records match your search.
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<!--
+    Load the search-specific JavaScript.
+
+    defer means the browser waits until the HTML has been parsed
+    before executing the script.
+-->
+
+<script
+    src="{{ url_for('static', filename='js/search.js') }}"
+    defer
+></script>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home - DataFinder
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Find the data you need.
+        </h1>
+
+        <p>
+            Search, filter, and explore your records using a
+            simple and responsive interface.
+        </p>
+
+        <!--
+            url_for() generates the correct Flask URL.
+
+            This is preferable to hardcoding:
+
+                href="/search"
+
+            because Flask handles the routing for us.
+        -->
+        <a
+            href="{{ url_for('search') }}"
+            class="button"
+        >
+            Go to Search
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

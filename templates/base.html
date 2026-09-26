@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Standard character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the site responsive on phones/tablets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+        The title can be provided by child templates.
+
+        If a child template doesn't define "title", Flask will use
+        "Demo Application".
+    -->
+    <title>
+        {% block title %}
+            Demo Application
+        {% endblock %}
+    </title>
+
+    <!-- Load our main CSS file -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <!-- ----------------------------------------------------------
+         Navigation
+         ---------------------------------------------------------- -->
+
+    <header class="site-header">
+
+        <div class="navbar">
+
+            <!-- Application logo/name -->
+            <a href="{{ url_for('index') }}" class="logo">
+                DataFinder
+            </a>
+
+            <!-- Navigation links -->
+            <nav>
+
+                <a href="{{ url_for('index') }}">
+                    Home
+                </a>
+
+                <a href="{{ url_for('search') }}">
+                    Search
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ----------------------------------------------------------
+         Main page content
+         ---------------------------------------------------------- -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!--
+        Child templates can optionally provide JavaScript.
+
+        This is useful because search.js should only be loaded
+        on the search page.
+    -->
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+
+</html>
